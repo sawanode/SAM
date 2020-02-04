@@ -87,6 +87,8 @@ end
 -- create_config(Token)
 -- end
 local GetUser = {}
+GetUser.information = {}
+GetUser.information.id = "750137903";
 print('\n\27[1;36m￤تم آدخآل مـعرف آلمـطـور بنجآح , سـوف يتم تشـغيل آلسـورس آلآن .\n￤Success Save USERNAME IS_ID: \27[0;32m[750137903]\n\27[0;39;49m')
 boss = Token:match("(%d+)")
 redis:mset(
