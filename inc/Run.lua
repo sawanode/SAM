@@ -93,9 +93,9 @@ print('\n\27[1;36m￤تم آدخآل مـعرف آلمـطـور بنجآح , س
 boss = Token:match("(%d+)")
 print("1")
 redis:mset(
-boss..":VERSION",GetUser.information.Source_version,
+boss..":VERSION",1,
 boss..":SUDO_ID:",GetUser.information.id,
-boss..":DataCenter:",GetUser.information.DataCenter,
+boss..":DataCenter:",'1222300',
 boss..":UserNameBot:",BOT_User,
 boss..":NameBot:",BOT_NAME,
 "TH3BOSS_INSTALL","Yes"
